@@ -1,0 +1,37 @@
+# github pages
+
+github pages 可以直接预览html文件，更直观的看到代码的呈现
+
+## 部署GitHub pages
+
+### 通过gh-pages npm 包
+
+```
+  yarn add gh-pages
+```
+
+package.json
+
+```
+  {
+    "scripts": {
+      "build": "next build",
+      "deploy": "gh-pages -d out"
+    }
+  }
+```
+
+构建并部署
+```bash
+  npm run build  # 生成静态文件到 out 目录
+  npm run deploy # 推送 out 目录到 gh-pages 分支
+```
+
+#### 底层原理
+- gh-pages 会创建一个临时分支（通常是 gh-pages），将 out 目录的内容推送到该分支。
+
+- GitHub 会自动将 gh-pages 分支的内容托管到：
+根域名: https://[username].github.io（如果仓库名为 [username].github.io）。
+子路径: https://[username].github.io/[repo-name]（其他仓库名）。
+
+
